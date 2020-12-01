@@ -117,6 +117,10 @@ def extract(args):
                   simulate=args.test,
                   **suffixes)
 
+def repair(args):
+    pass
+
+
 
 def check_and_create(d):
     """ Turn input into an existing, absolute directory path.
@@ -258,6 +262,10 @@ working directory except if you pass -f/--file.""")
                                 help="Do not use all available CPU cores in parallel to speed up batch jobs.")
     convert_parser.add_argument('-s', '--suffix', metavar='SUFFIX', help='Add this suffix to the filename of every new file.')
     convert_parser.set_defaults(func=convert)
+
+    repair_parser = subparsers.add_parser('repair',
+                                           help="Use your local install of MuseScore to convert MuseScore files.")
+    repair_parser.set_defaults(func=repair)
 
     args = parser.parse_args()
     if 'func' in args:
